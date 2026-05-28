@@ -98,7 +98,6 @@ function Nav() {
           </nav>
         </div>
       )}
-      </div>
     </header>
   );
 }
