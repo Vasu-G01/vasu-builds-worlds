@@ -145,7 +145,7 @@ function About() {
     <Card id="about">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground">About</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">
           Turning ideas into <em className="italic text-muted-foreground">working web products.</em>
         </h2>
       </div>
@@ -176,7 +176,7 @@ function Education() {
     <Card id="education">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground"><GraduationCap className="size-3.5" /> Education</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">D.A.V. College, Abohar</h2>
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">D.A.V. College, Abohar</h2>
         <p className="mt-3 text-muted-foreground">Bachelor of Computer Applications · 2025 – 2028</p>
       </div>
       <div className="mt-12 border-t border-border/70 pt-10">
@@ -224,7 +224,7 @@ function Experience() {
     <Card id="experience">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground"><Briefcase className="size-3.5" /> Experience</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">Where I'm <em className="italic text-muted-foreground">currently building.</em></h2>
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">Where I'm <em className="italic text-muted-foreground">currently building.</em></h2>
       </div>
       <div className="mx-auto mt-12 max-w-3xl divide-y divide-border/70">
         {EXPERIENCE.map((e) => (
@@ -262,7 +262,7 @@ function Certifications() {
     <Card id="certifications">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground"><Award className="size-3.5" /> Certifications</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">Always <em className="italic text-muted-foreground">learning in public.</em></h2>
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">Always <em className="italic text-muted-foreground">learning in public.</em></h2>
       </div>
       <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2">
         {CERTS.map((c, i) => (
@@ -288,7 +288,7 @@ function Contact() {
       <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-background border border-border">
         <MessageCircle className="size-5 text-foreground/70" strokeWidth={1.5} />
       </div>
-      <h2 className="mt-6 text-4xl sm:text-6xl leading-tight">Tell me about your <em className="italic text-muted-foreground">next project.</em></h2>
+      <h2 className="mt-6 text-[2.25rem] sm:text-6xl leading-tight">Tell me about your <em className="italic text-muted-foreground">next project.</em></h2>
       <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">Open to internships, freelance builds, and friendly intros. I usually reply within a day.</p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition">
