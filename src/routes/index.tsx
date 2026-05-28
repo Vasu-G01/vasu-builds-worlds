@@ -15,6 +15,8 @@ import {
   Briefcase,
   Award,
   MessageCircle,
+  Menu,
+  X,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -41,36 +43,68 @@ const NAV = [
 
 function Nav() {
   const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
   const onCopy = async () => {
     await navigator.clipboard.writeText(EMAIL);
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-border/60 bg-card/80 px-4 py-2.5 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.02),0_8px_30px_-12px_rgba(0,0,0,0.08)]">
-        <button onClick={onCopy} className="hidden sm:flex items-center gap-2 rounded-full bg-background px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition">
+    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border border-border/60 bg-card/80 px-3 py-2 sm:px-4 sm:py-2.5 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.02),0_8px_30px_-12px_rgba(0,0,0,0.08)]">
+        <button onClick={onCopy} className="flex items-center gap-2 rounded-full bg-background px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition">
           {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-          <span className="truncate max-w-[180px]">{copied ? "Copied" : EMAIL}</span>
+          <span className="truncate max-w-[140px] sm:max-w-[180px] hidden xs:inline sm:inline">{copied ? "Copied" : EMAIL}</span>
+          <span className="xs:hidden sm:hidden">Email</span>
         </button>
-        <nav className="flex items-center gap-1 text-sm">
+        <nav className="hidden lg:flex items-center gap-1 text-sm">
           {NAV.map((n) => (
             <a key={n.id} href={`#${n.id}`} className="rounded-full px-3 py-1.5 text-muted-foreground hover:bg-background hover:text-foreground transition">
               {n.label}
             </a>
           ))}
         </nav>
-        <a href="#contact" className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition">
+        <a href="#contact" className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition">
           Hire me <ArrowUpRight className="size-3.5" />
         </a>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          className="lg:hidden inline-flex size-9 items-center justify-center rounded-full bg-background border border-border text-foreground hover:bg-accent transition"
+        >
+          {open ? <X className="size-4" /> : <Menu className="size-4" />}
+        </button>
       </div>
+      {open && (
+        <div className="lg:hidden mx-auto mt-2 max-w-6xl rounded-3xl border border-border/60 bg-card/95 backdrop-blur-md p-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]">
+          <nav className="flex flex-col">
+            {NAV.map((n) => (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-4 py-3 text-sm text-foreground/80 hover:bg-background transition"
+              >
+                {n.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
+            >
+              Hire me <ArrowUpRight className="size-4" />
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
 
 function Card({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) {
   return (
-    <section id={id} className={`mx-auto max-w-6xl rounded-3xl bg-card px-6 py-16 sm:px-12 sm:py-20 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${className}`}>
+    <section id={id} className={`mx-auto max-w-6xl rounded-3xl bg-card px-5 py-12 sm:px-12 sm:py-20 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${className}`}>
       {children}
     </section>
   );
@@ -78,7 +112,7 @@ function Card({ id, children, className = "" }: { id?: string; children: React.R
 
 function Hero() {
   return (
-    <Card className="!py-20 sm:!py-28 text-center">
+    <Card className="!py-16 sm:!py-28 text-center">
       <div className="flex flex-col items-center gap-5">
         <div className="relative flex items-center">
           <div className="size-14 rounded-full bg-gradient-to-br from-accent to-secondary border border-border flex items-center justify-center text-lg font-medium text-foreground/70">VG</div>
@@ -87,7 +121,7 @@ function Hero() {
           </div>
         </div>
         <p className="mt-3 text-sm text-muted-foreground">Hey there, I'm Vasu Gumber</p>
-        <h1 className="text-5xl sm:text-7xl leading-[0.95] max-w-3xl">
+        <h1 className="text-[2.5rem] sm:text-7xl leading-[1.02] sm:leading-[0.95] max-w-3xl">
           Ready to build something <em className="italic text-muted-foreground">impactful.</em>
         </h1>
         <p className="text-base text-muted-foreground">BCA Student · 2025 – 28</p>
@@ -111,7 +145,7 @@ function About() {
     <Card id="about">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground">About</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">
           Turning ideas into <em className="italic text-muted-foreground">working web products.</em>
         </h2>
       </div>
@@ -142,7 +176,7 @@ function Education() {
     <Card id="education">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground"><GraduationCap className="size-3.5" /> Education</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">D.A.V. College, Abohar</h2>
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">D.A.V. College, Abohar</h2>
         <p className="mt-3 text-muted-foreground">Bachelor of Computer Applications · 2025 – 2028</p>
       </div>
       <div className="mt-12 border-t border-border/70 pt-10">
@@ -190,7 +224,7 @@ function Experience() {
     <Card id="experience">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground"><Briefcase className="size-3.5" /> Experience</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">Where I'm <em className="italic text-muted-foreground">currently building.</em></h2>
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">Where I'm <em className="italic text-muted-foreground">currently building.</em></h2>
       </div>
       <div className="mx-auto mt-12 max-w-3xl divide-y divide-border/70">
         {EXPERIENCE.map((e) => (
@@ -228,7 +262,7 @@ function Certifications() {
     <Card id="certifications">
       <div className="mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1 text-xs text-muted-foreground"><Award className="size-3.5" /> Certifications</span>
-        <h2 className="mt-6 text-3xl sm:text-5xl leading-tight">Always <em className="italic text-muted-foreground">learning in public.</em></h2>
+        <h2 className="mt-6 text-[1.75rem] sm:text-5xl leading-tight">Always <em className="italic text-muted-foreground">learning in public.</em></h2>
       </div>
       <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2">
         {CERTS.map((c, i) => (
@@ -254,7 +288,7 @@ function Contact() {
       <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-background border border-border">
         <MessageCircle className="size-5 text-foreground/70" strokeWidth={1.5} />
       </div>
-      <h2 className="mt-6 text-4xl sm:text-6xl leading-tight">Tell me about your <em className="italic text-muted-foreground">next project.</em></h2>
+      <h2 className="mt-6 text-[2.25rem] sm:text-6xl leading-tight">Tell me about your <em className="italic text-muted-foreground">next project.</em></h2>
       <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">Open to internships, freelance builds, and friendly intros. I usually reply within a day.</p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition">
