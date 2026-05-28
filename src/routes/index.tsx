@@ -15,6 +15,8 @@ import {
   Briefcase,
   Award,
   MessageCircle,
+  Menu,
+  X,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -41,28 +43,61 @@ const NAV = [
 
 function Nav() {
   const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
   const onCopy = async () => {
     await navigator.clipboard.writeText(EMAIL);
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-border/60 bg-card/80 px-4 py-2.5 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.02),0_8px_30px_-12px_rgba(0,0,0,0.08)]">
-        <button onClick={onCopy} className="hidden sm:flex items-center gap-2 rounded-full bg-background px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition">
+    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border border-border/60 bg-card/80 px-3 py-2 sm:px-4 sm:py-2.5 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.02),0_8px_30px_-12px_rgba(0,0,0,0.08)]">
+        <button onClick={onCopy} className="flex items-center gap-2 rounded-full bg-background px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition">
           {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-          <span className="truncate max-w-[180px]">{copied ? "Copied" : EMAIL}</span>
+          <span className="truncate max-w-[140px] sm:max-w-[180px] hidden xs:inline sm:inline">{copied ? "Copied" : EMAIL}</span>
+          <span className="xs:hidden sm:hidden">Email</span>
         </button>
-        <nav className="flex items-center gap-1 text-sm">
+        <nav className="hidden lg:flex items-center gap-1 text-sm">
           {NAV.map((n) => (
             <a key={n.id} href={`#${n.id}`} className="rounded-full px-3 py-1.5 text-muted-foreground hover:bg-background hover:text-foreground transition">
               {n.label}
             </a>
           ))}
         </nav>
-        <a href="#contact" className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition">
+        <a href="#contact" className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition">
           Hire me <ArrowUpRight className="size-3.5" />
         </a>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          className="lg:hidden inline-flex size-9 items-center justify-center rounded-full bg-background border border-border text-foreground hover:bg-accent transition"
+        >
+          {open ? <X className="size-4" /> : <Menu className="size-4" />}
+        </button>
+      </div>
+      {open && (
+        <div className="lg:hidden mx-auto mt-2 max-w-6xl rounded-3xl border border-border/60 bg-card/95 backdrop-blur-md p-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]">
+          <nav className="flex flex-col">
+            {NAV.map((n) => (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-4 py-3 text-sm text-foreground/80 hover:bg-background transition"
+              >
+                {n.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
+            >
+              Hire me <ArrowUpRight className="size-4" />
+            </a>
+          </nav>
+        </div>
+      )}
       </div>
     </header>
   );
