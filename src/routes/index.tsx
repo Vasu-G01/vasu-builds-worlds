@@ -104,7 +104,7 @@ function Nav() {
 
 function Card({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) {
   return (
-    <section id={id} className={`mx-auto max-w-6xl rounded-3xl bg-card px-6 py-16 sm:px-12 sm:py-20 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${className}`}>
+    <section id={id} className={`mx-auto max-w-6xl rounded-3xl bg-card px-5 py-12 sm:px-12 sm:py-20 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${className}`}>
       {children}
     </section>
   );
@@ -112,7 +112,7 @@ function Card({ id, children, className = "" }: { id?: string; children: React.R
 
 function Hero() {
   return (
-    <Card className="!py-20 sm:!py-28 text-center">
+    <Card className="!py-16 sm:!py-28 text-center">
       <div className="flex flex-col items-center gap-5">
         <div className="relative flex items-center">
           <div className="size-14 rounded-full bg-gradient-to-br from-accent to-secondary border border-border flex items-center justify-center text-lg font-medium text-foreground/70">VG</div>
@@ -121,7 +121,7 @@ function Hero() {
           </div>
         </div>
         <p className="mt-3 text-sm text-muted-foreground">Hey there, I'm Vasu Gumber</p>
-        <h1 className="text-5xl sm:text-7xl leading-[0.95] max-w-3xl">
+        <h1 className="text-[2.5rem] sm:text-7xl leading-[1.02] sm:leading-[0.95] max-w-3xl">
           Ready to build something <em className="italic text-muted-foreground">impactful.</em>
         </h1>
         <p className="text-base text-muted-foreground">BCA Student · 2025 – 28</p>
