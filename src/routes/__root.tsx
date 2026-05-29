@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Vasu-Gumber-Resume" },
+      { name: "description", content: "A personal portfolio website showcasing skills, education, and experience." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Vasu-Gumber-Resume" },
+      { property: "og:description", content: "A personal portfolio website showcasing skills, education, and experience." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Vasu-Gumber-Resume" },
+      { name: "twitter:description", content: "A personal portfolio website showcasing skills, education, and experience." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/11184177-08a9-4526-94e0-da132cd9d960/id-preview-db013427--c9e85eb9-ff10-4c88-80c7-546b323b1ff8.lovable.app-1780035627075.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/11184177-08a9-4526-94e0-da132cd9d960/id-preview-db013427--c9e85eb9-ff10-4c88-80c7-546b323b1ff8.lovable.app-1780035627075.png" },
     ],
     links: [
       {
