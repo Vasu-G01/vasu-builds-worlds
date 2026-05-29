@@ -57,26 +57,26 @@ function Nav() {
           <span className="truncate max-w-[140px] sm:max-w-[180px] hidden xs:inline sm:inline">{copied ? "Copied" : EMAIL}</span>
           <span className="xs:hidden sm:hidden">Email</span>
         </button>
-        <nav className="hidden lg:flex items-center gap-1 text-sm">
+        <nav className="hidden md:flex items-center gap-1 text-sm">
           {NAV.map((n) => (
             <a key={n.id} href={`#${n.id}`} className="rounded-full px-3 py-1.5 text-muted-foreground hover:bg-background hover:text-foreground transition">
               {n.label}
             </a>
           ))}
         </nav>
-        <a href="#contact" className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition">
+        <a href="#contact" className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground hover:opacity-90 transition">
           Hire me <ArrowUpRight className="size-3.5" />
         </a>
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
-          className="lg:hidden inline-flex size-9 items-center justify-center rounded-full bg-background border border-border text-foreground hover:bg-accent transition"
+          className="md:hidden inline-flex size-9 items-center justify-center rounded-full bg-background border border-border text-foreground hover:bg-accent transition"
         >
           {open ? <X className="size-4" /> : <Menu className="size-4" />}
         </button>
       </div>
       {open && (
-        <div className="lg:hidden absolute left-0 right-0 top-full z-50 mx-3 mt-2 max-w-6xl rounded-3xl border border-border/60 bg-card/95 backdrop-blur-md p-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] sm:mx-4">
+        <div className="md:hidden absolute left-0 right-0 top-full z-50 mx-3 mt-2 max-w-6xl rounded-3xl border border-border/60 bg-card/95 backdrop-blur-md p-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] sm:mx-4">
           <nav className="flex flex-col">
             {NAV.map((n) => (
               <a
