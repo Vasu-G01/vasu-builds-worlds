@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const EMAIL = "vasugumber@gmail.com";
+const EMAIL = "vxsugumber@gmail.com";
 
 const NAV = [
   { id: "about", label: "About" },
@@ -89,7 +89,7 @@ function Nav() {
               </a>
             ))}
             <a
-              href="#contact"
+              href={`mailto:${"vxsugumber@gmail.com"}`}
               onClick={() => setOpen(false)}
               className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
             >
@@ -150,7 +150,7 @@ function About() {
         </h2>
       </div>
       <div className="mx-auto mt-10 max-w-2xl space-y-5 text-[15px] leading-relaxed text-muted-foreground">
-        <p>I'm a first-year BCA student at D.A.V. College, Abohar, passionate about turning ideas into working web products. My stack of choice is MERN — Express.js, React.js, and Node.js — and I enjoy the full journey from designing a clean UI to wiring up a backend API.</p>
+        <p>I'm a Second-Year BCA student at D.A.V. College, Abohar, passionate about turning ideas into working web products. My stack of choice is MERN — Express.js, React.js, and Node.js — and I enjoy the full journey from designing a clean UI to wiring up a backend API.</p>
         <p>Beyond coding, I serve as a <span className="text-foreground">Gemini Student Ambassador</span> for Google, where I introduce fellow students to AI-powered tools and developer ecosystems. I believe technology should be understood, not just used — so I make it a habit to break down problems, document solutions clearly, and keep learning in public.</p>
         <p>When I'm not building projects, I'm exploring digital marketing and SEO to understand how products reach and grow their audience — because great software deserves great reach.</p>
         <p>I'm actively looking for a <span className="text-foreground">web development internship</span> where I can contribute to a real product, work with a team, and level up fast. If that sounds like a fit, let's connect.</p>
@@ -291,11 +291,11 @@ function Contact() {
       <h2 className="mt-6 text-[2.25rem] sm:text-6xl leading-tight">Tell me about your <em className="italic text-muted-foreground">next project.</em></h2>
       <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">Open to internships, freelance builds, and friendly intros. I usually reply within a day.</p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition">
+        <a href={`mailto:${"vxsugumber@gmail.com"}`} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition">
           <Mail className="size-4" /> Email me
         </a>
-        <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium hover:bg-accent transition">
-          WhatsApp
+        <a href="https://t.me/Vx5uu?text=Hello%20Vasu,%20Can%20We%20Connect" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium hover:bg-accent transition">
+          Telegram
         </a>
       </div>
     </Card>
@@ -307,11 +307,11 @@ function Footer() {
     <footer className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
       <p>© {new Date().getFullYear()} Vasu Gumber. All rights reserved.</p>
       <div className="flex items-center gap-4">
-        <a href="#" className="hover:text-foreground transition">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/vasugumber/" className="hover:text-foreground transition">LinkedIn</a>
         <span>/</span>
-        <a href="#" className="hover:text-foreground transition">GitHub</a>
+        <a href="https://github.com/Vasu-G01" className="hover:text-foreground transition">GitHub</a>
         <span>/</span>
-        <a href="#" className="hover:text-foreground transition">Instagram</a>
+        <a href="https://www.instagram.com/vx5uu/" className="hover:text-foreground transition">Instagram</a>
       </div>
     </footer>
   );
