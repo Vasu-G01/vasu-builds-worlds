@@ -50,7 +50,7 @@ function Nav() {
     setTimeout(() => setCopied(false), 1600);
   };
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+    <header className="sticky top-0 z-50 relative px-3 pt-3 sm:px-4 sm:pt-4">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border border-border/60 bg-card/80 px-3 py-2 sm:px-4 sm:py-2.5 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.02),0_8px_30px_-12px_rgba(0,0,0,0.08)]">
         <button onClick={onCopy} className="flex items-center gap-2 rounded-full bg-background px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition">
           {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
@@ -76,7 +76,7 @@ function Nav() {
         </button>
       </div>
       {open && (
-        <div className="lg:hidden mx-auto mt-2 max-w-6xl rounded-3xl border border-border/60 bg-card/95 backdrop-blur-md p-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]">
+        <div className="lg:hidden absolute left-0 right-0 top-full z-50 mx-3 mt-2 max-w-6xl rounded-3xl border border-border/60 bg-card/95 backdrop-blur-md p-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] sm:mx-4">
           <nav className="flex flex-col">
             {NAV.map((n) => (
               <a
